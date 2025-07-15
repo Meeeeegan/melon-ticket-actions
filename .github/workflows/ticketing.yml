@@ -1,17 +1,34 @@
-name: Promise9 Ticketing Immediate
+# .github/workflows/promise9.yml
+name: Promise9 Ticketing
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:          # 수동 “Run workflow” 버튼
+  schedule:                   # 예매 시작 뒤 재시도용
+    - cron: "*/5 * * * *"     # 5분마다
 
 jobs:
-  ticketing:
+  ticketing-na:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: 티켓팅 시도
+      - name: 나 구역 시도
         uses: mooyoul/melon-ticket-actions@v1.1.0
         with:
           product-id: 211517
           schedule-id: 100003
           seat-id: 19_395
           slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          message: '지금 바로 프로미스나인 티켓팅 시도!'
+          message: "<@U12345678> 프로미스나인 8/8 '나' 구역 ▶︎ 시도!"
+
+  ticketing-da:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 다 구역 시도
+        uses: mooyoul/melon-ticket-actions@v1.1.0
+        with:
+          product-id: 211517
+          schedule-id: 100003
+          seat-id: 19_392
+          slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          message: "<@U12345678> 프로미스나인 8/8 '다' 구역 ▶︎ 시도!"
