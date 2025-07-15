@@ -1,0 +1,17 @@
+name: Promise9 Ticketing Immediate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ticketing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 티켓팅 시도
+        uses: mooyoul/melon-ticket-actions@v1.1.0
+        with:
+          product-id: 211517
+          schedule-id: 100003
+          seat-id: 19_395
+          slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          message: '지금 바로 프로미스나인 티켓팅 시도!'
