@@ -24,6 +24,13 @@ const qs = require("querystring");
     const res = await axios_1.default({
         method: "POST",
         url: "https://ticket.melon.com/tktapi/product/seatStateInfo.json",
+        headers: {
+            // ↓ 멜론이 요구하는 최소 헤더
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": `https://ticket.melon.com/performance/index.htm?prodId=${productId}`,
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
         params: {
             v: "1",
         },
