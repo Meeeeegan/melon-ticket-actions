@@ -25,11 +25,13 @@ const qs = require("querystring");
         method: "POST",
         url: "https://ticket.melon.com/tktapi/product/seatStateInfo.json",
         headers: {
-            // ↓ 멜론이 요구하는 최소 헤더
-            "User-Agent": "Mozilla/5.0",
-            "Accept": "application/json, text/plain, */*",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            "Accept": "*/*",
             "Referer": `https://ticket.melon.com/performance/index.htm?prodId=${productId}`,
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            "Origin": "https://ticket.melon.com",
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
         },
         params: {
             v: "1",
